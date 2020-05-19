@@ -17,6 +17,7 @@ const App = () => {
     return (<Router history={history}>
         <div className="App">
             <Helmet>
+                <title>JBCNConf - The greatest JVM Conference in Spain</title>
                 <link
                     href="https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&family=Roboto&family=Titillium+Web&display=swap"
                     rel="stylesheet"/>
