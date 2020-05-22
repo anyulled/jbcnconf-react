@@ -5,15 +5,17 @@ import {Container, Grid} from "semantic-ui-react";
 
 const StyledCounter = styled(Grid.Column)`
   border-radius: 5px;
-  border:1px solid white;
+  border: none;
   text-align: center;
   color: white;
+  box-shadow: 1px 3px rgba(0,0,0,0.5);
+  padding:10px 0;
   background: linear-gradient(to bottom, rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%);
 `;
 
 const StyledCountDown = styled(Grid.Column)`
-  font-family: Pacifico, sans-serif;
-  font-weight: lighter;
+  font-family: Merienda one, sans-serif;
+  font-weight: normal;
 `;
 
 const Completed = () => <span>Event is on!</span>;

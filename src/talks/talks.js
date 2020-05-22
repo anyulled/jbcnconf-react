@@ -1,22 +1,28 @@
 import React from "react";
 import axios from "axios";
 import {useQuery} from "react-query";
-import {Card, Grid, Label, List, Loader, Message} from "semantic-ui-react";
+import {Card, Container, Grid, Image, Label, Loader, Message} from "semantic-ui-react";
 import fetchSpeakers from "../speakers/common";
+import Divider from "semantic-ui-react/dist/commonjs/elements/Divider";
 
-const TalkSpeakers = ({speakers}) =>
-    (<span>{speakers.map((speaker, index) => <em
-        key={index}>{speaker.name}{index + 1 !== speakers.length && ", "}</em>)}</span>);
+const TalkSpeakers = ({speakers}) => (<span>{speakers.map((speaker, index) => <em
+    key={index}>{speaker.name}{index + 1 !== speakers.length && ", "}</em>)}</span>);
 
-const Talk = ({talk: {title, tags, level}, speakers}) =>
+const Talk = ({talk: {title, abstract, tags, level}, speakers}) =>
     <Card color="blue" fluid>
-        <Card.Header>{title}</Card.Header>
         <Card.Content>
-            <Card.Header> by <TalkSpeakers speakers={speakers}/></Card.Header>
-            <Card.Description>Level: {level}</Card.Description>
+            <Image avatar src={speakers[0].image} floated="right"/>
+            <Card.Header>{title}</Card.Header>
+            <Card.Meta> by <TalkSpeakers speakers={speakers}/></Card.Meta>
+            <Card.Description>
+                <p>{abstract.substr(0, 240).concat("...")}</p>
+                <p>Level: {level}</p>
+            </Card.Description>
         </Card.Content>
         <Card.Meta>
-            {tags.map((tag, index) => <span key={index}><Label tag>{tag}</Label> </span>)}
+            <Label.Group color="blue" size="small">
+                {tags.map((tag, index) => <span key={index}><Label basic>{tag}</Label> </span>)}
+            </Label.Group>
         </Card.Meta>
     </Card>;
 
@@ -25,29 +31,35 @@ const Talks = () => {
         const talks = await axios.get("http://localhost:3001/talks");
         return talks.data;
     };
-    const {data: speakers} = useQuery("speakers", fetchSpeakers);
-    const {status, data: talks, error} = useQuery("talkList", fetchTalks);
+    const {status: speakerStatus, data: speakers, error: speakerError} = useQuery("speakers", fetchSpeakers);
+    const {status: talkStatus, data: talks, error: talkError} = useQuery("talkList", fetchTalks);
 
-    if (status === 'loading') {
+    const ready = () => speakerStatus === "success" & talkStatus === "success";
+    const isLoading = () => speakerStatus === "loading" || talkStatus === "loading";
+    const isError = () => speakerStatus === "error" || talkStatus === "error";
+
+    if (isLoading() === 'loading') {
         return <Loader size={"medium"}/>
     }
-    if (status === 'error') {
-        return <Message negative>Error: {error.message}</Message>
+    if (isError() === 'error') {
+        return <Message negative>Error: {talkError.message} {speakerError.message}</Message>
     }
-    return <Grid>
-        <Grid.Row>
-            <Grid.Column width="16">
-                <List>
-                    {status === "success" && talks.map((talk, index) => {
-                        const speakersTalk = talk.speakers.map(id => speakers.find(speaker => speaker.ref === id));
-                        return <List.Item key={index}>
-                            <Talk talk={talk} speakers={speakersTalk}/>
-                        </List.Item>;
-                    })}
-                </List>
-            </Grid.Column>
-        </Grid.Row>
-    </Grid>
+    return <Container>
+        <Divider/>
+        <h3>Talks</h3>
+        <Grid>
+            <Grid.Row>
+                <Grid.Column width="16">
+                    <Card.Group itemsPerRow={2}>
+                        {ready() && talks.map((talk, index) => {
+                            const speakersTalk = talk.speakers.map(id => speakers.find(speaker => speaker.ref === id));
+                            return <Talk talk={talk} speakers={speakersTalk} key={index}/>;
+                        })}
+                    </Card.Group>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
+    </Container>
 };
 
 export default Talks;

@@ -2,7 +2,9 @@ import React from "react";
 import axios from "axios";
 import {useQuery} from "react-query";
 import styled from "styled-components";
-import {Grid, Message, Segment} from "semantic-ui-react";
+import {Grid, Message} from "semantic-ui-react";
+import Container from "semantic-ui-react/dist/commonjs/elements/Container";
+import Divider from "semantic-ui-react/dist/commonjs/elements/Divider";
 
 const StyledImage = styled.img`
     max-width: 80%;
@@ -50,7 +52,8 @@ const Sponsors = () => {
         return sponsors.data;
     };
     const {status, data} = useQuery("sponsors", fetchSponsors);
-    return (<Segment>
+    return (<Container>
+        <Divider/>
         <h3>Sponsors</h3>
         <p>Are you a technology company? Interested in meeting enthusiasts and geek people for technology?</p>
         <p>This is a <strong>priceless opportunity</strong> to participate in the first big Java and JVM conference in
@@ -66,7 +69,7 @@ const Sponsors = () => {
             <SponsorDetails key={4} text="supporters" color="brown" sponsors={data.supporters}/>
         </div>
         }
-    </Segment>)
+    </Container>)
 };
 
 export default Sponsors;

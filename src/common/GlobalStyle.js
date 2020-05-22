@@ -2,7 +2,7 @@ import {createGlobalStyle} from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 header {
-  margin-bottom: 90px;
+  margin-bottom: 40px;
 }
 svg, a svg{
   height: 16px;

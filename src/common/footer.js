@@ -7,10 +7,22 @@ import {InfoLargeOutline} from "@styled-icons/typicons/InfoLargeOutline";
 import styled from "styled-components";
 
 const InfoIcon = styled(InfoLargeOutline)`height: 16px`;
+const StyledContainer = styled(Container)`
+h2, h4 {
+    font-family:Merienda One, sans-serif;
+}
+a {
+    color:ghostwhite;
+    text-shadow: 1px 1px rgba(50,50,50,0.5);
+}
+`;
 
 const Footer = () => {
-    return (<Segment inverted vertical style={{padding: '5em 0 em'}}>
-            <Container>
+    return (<Segment inverted vertical style={{
+            padding: '5em 0 em',
+            background: "url('https://www.jbcnconf.com/2020/assets/img/homepage/footer-bg.jpg')"
+        }}>
+            <StyledContainer>
                 <Grid inverted stackable divided>
                     <Grid.Row>
                         <Grid.Column width={16}>
@@ -83,7 +95,7 @@ const Footer = () => {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-            </Container>
+            </StyledContainer>
         </Segment>
 
     );
