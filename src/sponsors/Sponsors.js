@@ -1,11 +1,8 @@
 import React from "react";
-import Alert from "react-bootstrap/Alert";
-import Col from "react-bootstrap/Col";
 import axios from "axios";
 import {useQuery} from "react-query";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
 import styled from "styled-components";
+import {Grid, Message, Segment} from "semantic-ui-react";
 
 const StyledImage = styled.img`
     max-width: 80%;
@@ -14,37 +11,37 @@ const StyledImage = styled.img`
     line-height: 75px;
 `;
 
-const StyledCol = styled(Col)`
+const StyledCol = styled(Grid.Column)`
 text-align: center`;
 
 const SponsorDetails = (props) => {
     const size = (text) => {
         switch (text) {
             case 'top':
-                return 12;
+                return 16;
             case 'premium':
-                return 6;
+                return 8;
             case 'regular':
-                return 4;
+                return 5;
             default:
-                return 2;
+                return 3;
         }
     };
 
-    return (<Container>
-        <Row>
-            <Col sm={12}>
-                <Alert variant={props.variant}>{props.text.toUpperCase()}</Alert>
-            </Col>
-        </Row>
-        <Row>
-            {props.sponsors.map((sponsor, index) => <StyledCol sm={size(props.text)} xs={12} key={index}>
+    return (<Grid container>
+        <Grid.Row>
+            <Grid.Column>
+                <Message color={props.color}>{props.text.toUpperCase()}</Message>
+            </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+            {props.sponsors.map((sponsor, index) => <StyledCol textAlign="center" width={size(props.text)} key={index}>
                 <a href={sponsor.href}>
                     <StyledImage src={`https://www.jbcnconf.com/2020/${sponsor.image.src}`}
                                  alt={sponsor.image.alt}/></a>
             </StyledCol>)}
-        </Row>
-    </Container>);
+        </Grid.Row>
+    </Grid>);
 };
 
 const Sponsors = () => {
@@ -53,7 +50,7 @@ const Sponsors = () => {
         return sponsors.data;
     };
     const {status, data} = useQuery("sponsors", fetchSponsors);
-    return (<Container>
+    return (<Segment>
         <h3>Sponsors</h3>
         <p>Are you a technology company? Interested in meeting enthusiasts and geek people for technology?</p>
         <p>This is a <strong>priceless opportunity</strong> to participate in the first big Java and JVM conference in
@@ -63,13 +60,13 @@ const Sponsors = () => {
             href="mailto:info@barcelonajug.org">info@barcelonajug.org</a></p>
         {status === "success" &&
         <div>
-            <SponsorDetails key={1} text="top" variant="danger" sponsors={data.top}/>
-            <SponsorDetails key={2} text="premium" variant="warning" sponsors={data.premium}/>
-            <SponsorDetails key={3} text="regular" variant="primary" sponsors={data.regular}/>
-            <SponsorDetails key={4} text="supporters" variant="info" sponsors={data.supporters}/>
+            <SponsorDetails key={1} text="top" color="red" sponsors={data.top}/>
+            <SponsorDetails key={2} text="premium" color="orange" sponsors={data.premium}/>
+            <SponsorDetails key={3} text="regular" color="blue" sponsors={data.regular}/>
+            <SponsorDetails key={4} text="supporters" color="brown" sponsors={data.supporters}/>
         </div>
         }
-    </Container>)
+    </Segment>)
 };
 
 export default Sponsors;

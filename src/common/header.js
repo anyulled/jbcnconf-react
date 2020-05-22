@@ -1,10 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import logo from "../img/logo-jbcnconf.png";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
 import axios from "axios";
 import {useQuery} from "react-query";
+import {Menu} from "semantic-ui-react";
 
 const Header = () => {
     const fetchMenu = async () => {
@@ -13,17 +12,12 @@ const Header = () => {
     };
     const {status, data} = useQuery("menu", fetchMenu);
 
-    return status === "success" && <Navbar bg="dark" variant="dark" fixed="top" expand="lg">
-        <Navbar.Brand href="/#home">
+    return status === "success" && <Menu inverted fixed="top" pointing stackable>
+        <Menu.Item href="/#home">
             <img src={logo} alt="logo" height="64"/>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-                {data.map((link, index) => <Link key={index} className="nav-link" to={link.href}>{link.label}</Link>)}
-            </Nav>
-        </Navbar.Collapse>
-    </Navbar>;
+        </Menu.Item>
+        {data.map((link, index) => <Menu.Item key={index}><Link to={link.href}>{link.label}</Link></Menu.Item>)}
+    </Menu>;
 };
 
 export default Header;
