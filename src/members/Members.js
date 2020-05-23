@@ -2,7 +2,9 @@ import React from "react";
 import {useQuery} from "react-query";
 import axios from "axios";
 import {Linkedin, Twitter} from "@styled-icons/boxicons-logos";
-import {Card, Grid, Image} from "semantic-ui-react";
+import {Card, Container, Grid, Icon, Image} from "semantic-ui-react";
+import Divider from "semantic-ui-react/dist/commonjs/elements/Divider";
+import MeetupEvents from "../events/MeetupEvents";
 
 const Member = (props) => {
     return (<Card>
@@ -20,7 +22,6 @@ const Member = (props) => {
     </Card>);
 };
 
-
 const Members = () => {
     const fetchMembers = async () => {
         const members = await axios.get("http://localhost:3001/members");
@@ -29,28 +30,33 @@ const Members = () => {
 
     let {status, data} = useQuery("members", fetchMembers);
 
-    return (
+    return (<Container>
+        <Divider/>
+        <h3><Icon name="users"/> Members</h3>
         <Grid>
             <Grid.Row>
                 <Grid.Column>
                     <p>The Barcelona Java User Group is a non profit association with a great team and a broad
                         experience
                         in Java technologies. Since 2012, we are organizing talks and meetups focused
-                        on <strong>Java</strong> topics, looking forward to spin this technology from our hometown to
+                        on <strong>Java</strong> topics, looking forward to spin this technology from our hometown
+                        to
                         the
                         rest of the world.</p>
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-                <Grid.Column>
-                    <Card.Group>
+                <Grid.Column width={12}>
+                    <Card.Group itemsPerRow={3}>
                         {status === "success" && data.map((member, index) => <Member key={index} member={member}/>)}
                     </Card.Group>
                 </Grid.Column>
+                <Grid.Column floated="right" width={4}>
+                    <MeetupEvents/>
+                </Grid.Column>
             </Grid.Row>
         </Grid>
-    )
-        ;
+    </Container>);
 };
 
 export default Members;

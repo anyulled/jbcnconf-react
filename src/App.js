@@ -15,6 +15,8 @@ import HomepageLayout from "./common/Homepage";
 import Tickets from "./tickets/Tickets";
 import Venue from "./venue/Venue";
 import BecomeSponsor from "./sponsors/BecomeSponsor";
+import CodeOfConduct from "./codeOfConduct/CodeOfConduct";
+import TravelToBarcelona from "./travel/travelToBarcelona";
 
 const App = () => {
     const history = createBrowserHistory();
@@ -60,6 +62,12 @@ const App = () => {
                 </Route>
                 <Route path="/become-sponsor">
                     <BecomeSponsor/>
+                </Route>
+                <Route path="/coc">
+                    <CodeOfConduct/>
+                </Route>
+                <Route path="/travel">
+                    <TravelToBarcelona/>
                 </Route>
                 <Route path="*">
                     <h1 className="text-center text-danger">URL not found</h1>
