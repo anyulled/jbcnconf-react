@@ -662,11 +662,11 @@
       "items": [
         {
           "label": "To Barcelona",
-          "href": "/travel-to-java-barcelona.html"
+          "href": "/travel-to-java-barcelona"
         },
         {
           "label": "Offers",
-          "href": "/offers.html"
+          "href": "/offers"
         }
       ]
     },

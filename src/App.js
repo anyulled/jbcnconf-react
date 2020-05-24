@@ -17,6 +17,7 @@ import Venue from "./venue/Venue";
 import BecomeSponsor from "./sponsors/BecomeSponsor";
 import CodeOfConduct from "./codeOfConduct/CodeOfConduct";
 import TravelToBarcelona from "./travel/travelToBarcelona";
+import SpeakerPage from "./speakers/SpeakerPage";
 
 const App = () => {
     const history = createBrowserHistory();
@@ -48,6 +49,9 @@ const App = () => {
                 <Route path="/members">
                     <Members/>
                 </Route>
+                <Route path="/speakers/:id">
+                    <SpeakerPage/>
+                </Route>
                 <Route path="/speakers">
                     <Speakers/>
                 </Route>
@@ -66,7 +70,7 @@ const App = () => {
                 <Route path="/coc">
                     <CodeOfConduct/>
                 </Route>
-                <Route path="/travel">
+                <Route path="/travel-to-java-barcelona">
                     <TravelToBarcelona/>
                 </Route>
                 <Route path="*">

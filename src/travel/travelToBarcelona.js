@@ -54,7 +54,7 @@ const TravelToBarcelona = () => {
             street.
             <br/>
         </p>
-        <Embed iframe={{allowFullScreen: true}} icon="map" url="https://goo.gl/48YzKh"/>
+        <Embed active iframe={{allowFullScreen: true}} icon="map" url="https://goo.gl/48YzKh"/>
 
         <Divider horizontal>
             <Header as="h3">
@@ -69,7 +69,7 @@ const TravelToBarcelona = () => {
             <br/>
             Within walking distance from the above Barri Gòtic and La Rambla street (across the marina).
         </p>
-        <Embed iframe={{allowFullScreen: true}} icon="map" url="https://goo.gl/48YzKh"/>
+        <Embed active iframe={{allowFullScreen: true}} icon="map" url="https://goo.gl/48YzKh"/>
     </Container>);
 };
 

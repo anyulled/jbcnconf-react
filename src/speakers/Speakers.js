@@ -1,13 +1,13 @@
 import React from "react";
 import {useQuery} from "react-query";
-import {Twitter, Linkedin} from "@styled-icons/boxicons-logos";
+import {Linkedin, Twitter} from "@styled-icons/boxicons-logos";
 import {Home} from "@styled-icons/heroicons-solid/Home";
 import fetchSpeakers from "./common";
 import {Card, Grid, Image, Loader, Message} from "semantic-ui-react";
 import Container from "semantic-ui-react/dist/commonjs/elements/Container";
 import Divider from "semantic-ui-react/dist/commonjs/elements/Divider";
 
-const Speaker = ({speaker: {name, description, image, twitter, homepage, linkedin}}) => {
+export const Speaker = ({speaker: {name, description, image, twitter, homepage, linkedin}}) => {
     return <Card color="blue">
         <Image src={image}/>
         <Card.Content>
@@ -24,6 +24,7 @@ const Speaker = ({speaker: {name, description, image, twitter, homepage, linkedi
 
 const Speakers = () => {
     const {status, data, error} = useQuery("speakerList", fetchSpeakers);
+
     if (status === 'loading') {
         return <Loader size="medium"/>
     }
