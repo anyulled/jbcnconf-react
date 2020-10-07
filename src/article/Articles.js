@@ -1,27 +1,25 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
 import {useQuery} from "react-query";
 import axios from "axios";
 import {ChevronsRight} from "@styled-icons/boxicons-solid/ChevronsRight";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import styled from "styled-components";
+import {Button, Container, Item, Segment} from "semantic-ui-react";
 
-const StyledArticle = styled.article`
-color: white;
-background-image: ${props => `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.jbcnconf.com/2020/${props.image}')`};
-
-`;
+//background-image: ${props => `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.jbcnconf.com/2020/${props.image}')`};
 
 const Article = (props) => {
-    return (
-        <StyledArticle image={props.article.image}>
-            <h1>{props.article.title}</h1>
-            <p>{props.article.excerpt}</p>
-            <Button href={`/articles?id=${props.article.id}`}>Read more <ChevronsRight/></Button>
-        </StyledArticle>
-    );
+    return (<Item>
+        <Item.Image src={`https://www.jbcnconf.com/2020/${props.article.image}`}/>
+        <Item.Content>
+            <Item.Header>{props.article.title}</Item.Header>
+            <Item.Meta>
+                <p>{props.article.excerpt}</p>
+            </Item.Meta>
+            <Item.Extra>
+                <Button floated={"right"} primary href={`/articles?id=${props.article.id}`}>Read more <ChevronsRight/>
+                </Button>
+            </Item.Extra>
+        </Item.Content>
+    </Item>);
 }
 
 const Articles = () => {
@@ -32,11 +30,11 @@ const Articles = () => {
     const {status, data} = useQuery("Articles", fetchArticles);
     return (
         <Container>
-            <Row>
-                {status === "success" && data.map((article, index) => <Col key={index}>
-                    <Article article={article}/>
-                </Col>)}
-            </Row>
+            <Segment>
+                <Item.Group divided>
+                    {status === "success" && data.map((article, index) => <Article key={index} article={article}/>)}
+                </Item.Group>
+            </Segment>
         </Container>);
 };
 

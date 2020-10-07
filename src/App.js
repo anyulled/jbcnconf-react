@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "./common/header";
+import TopMenu from "./common/topMenu";
 import Footer from "./common/footer";
 import {Route, Router, Switch} from "react-router";
 import {createBrowserHistory} from "history";
@@ -11,6 +11,13 @@ import GlobalStyle from "./common/GlobalStyle";
 import Speakers from "./speakers/Speakers";
 import Sponsors from "./sponsors/Sponsors";
 import Articles from "./article/Articles";
+import HomepageLayout from "./common/Homepage";
+import Tickets from "./tickets/Tickets";
+import Venue from "./venue/Venue";
+import BecomeSponsor from "./sponsors/BecomeSponsor";
+import CodeOfConduct from "./codeOfConduct/CodeOfConduct";
+import TravelToBarcelona from "./travel/travelToBarcelona";
+import SpeakerPage from "./speakers/SpeakerPage";
 
 const App = () => {
     const history = createBrowserHistory();
@@ -19,19 +26,22 @@ const App = () => {
             <Helmet>
                 <title>JBCNConf - The greatest JVM Conference in Spain</title>
                 <link
-                    href="https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&family=Roboto&family=Titillium+Web&display=swap"
+                    href="https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&family=Merienda+One&family=Roboto&family=Titillium+Web&display=swap"
                     rel="stylesheet"/>
             </Helmet>
-            <header>
-                <Header/>
-            </header>
             <GlobalStyle/>
+            <header>
+                <TopMenu/>
+            </header>
             <Switch>
-                <Route path="/articles">
-                    <Articles/>
-                </Route>
                 <Route exact path="/">
                     <Home/>
+                </Route>
+                <Route path="/homepage">
+                    <HomepageLayout/>
+                </Route>
+                <Route path="/articles">
+                    <Articles/>
                 </Route>
                 <Route path="/talks">
                     <Talks/>
@@ -39,11 +49,29 @@ const App = () => {
                 <Route path="/members">
                     <Members/>
                 </Route>
+                <Route path="/speakers/:id">
+                    <SpeakerPage/>
+                </Route>
                 <Route path="/speakers">
                     <Speakers/>
                 </Route>
                 <Route path="/sponsors">
                     <Sponsors/>
+                </Route>
+                <Route path="/tickets">
+                    <Tickets/>
+                </Route>
+                <Route path="/java-barcelona-venue">
+                    <Venue/>
+                </Route>
+                <Route path="/become-sponsor">
+                    <BecomeSponsor/>
+                </Route>
+                <Route path="/coc">
+                    <CodeOfConduct/>
+                </Route>
+                <Route path="/travel-to-java-barcelona">
+                    <TravelToBarcelona/>
                 </Route>
                 <Route path="*">
                     <h1 className="text-center text-danger">URL not found</h1>

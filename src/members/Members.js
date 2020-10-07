@@ -1,42 +1,26 @@
 import React from "react";
 import {useQuery} from "react-query";
 import axios from "axios";
-import {Twitter, Linkedin} from "@styled-icons/boxicons-logos";
-import Card from "react-bootstrap/Card";
-import styled from "styled-components";
-import CardColumns from "react-bootstrap/CardColumns";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-
-const StyledCard = styled(Card)`
-
-.card-subtitle{
-  font-family: Pacifico, sans-serif;
-}
-`;
-const StyledLink = styled(Card.Link)`
-svg {
-  height: 16px;
-}
-`;
+import {Linkedin, Twitter} from "@styled-icons/boxicons-logos";
+import {Card, Container, Grid, Icon, Image} from "semantic-ui-react";
+import Divider from "semantic-ui-react/dist/commonjs/elements/Divider";
+import MeetupEvents from "../events/MeetupEvents";
 
 const Member = (props) => {
-    return (<StyledCard>
-        <Card.Header>{props.member.name}</Card.Header>
-        <Card.Img variant="top" src={`https://www.jbcnconf.com/2020/${props.member.image.url}`}
-                  alt={props.member.image.alt}/>
-        <Card.Body>
-            <Card.Subtitle>{props.member.position}</Card.Subtitle>
-            <Card.Text>{props.member.bio}</Card.Text>
-        </Card.Body>
-        <Card.Footer>
-            {props.member.linkedin && <StyledLink href={props.member.linkedin}><Linkedin/></StyledLink>}
-            {props.member.twitter && <StyledLink href={props.member.twitter}><Twitter/></StyledLink>}
-        </Card.Footer>
-    </StyledCard>);
+    return (<Card>
+        <Image src={`https://www.jbcnconf.com/2020/${props.member.image.url}`}
+               alt={props.member.image.alt}/>
+        <Card.Content>
+            <Card.Header>{props.member.name}</Card.Header>
+            <Card.Meta>{props.member.position}</Card.Meta>
+            <Card.Description>{props.member.bio}</Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+            {props.member.linkedin && <Card.Description href={props.member.linkedin}><Linkedin/></Card.Description>}
+            {props.member.twitter && <Card.Description href={props.member.twitter}><Twitter/></Card.Description>}
+        </Card.Content>
+    </Card>);
 };
-
 
 const Members = () => {
     const fetchMembers = async () => {
@@ -46,28 +30,33 @@ const Members = () => {
 
     let {status, data} = useQuery("members", fetchMembers);
 
-    return (
-        <Container>
-            <Row>
-                <Col>
+    return (<Container>
+        <Divider/>
+        <h3><Icon name="users"/> Members</h3>
+        <Grid>
+            <Grid.Row>
+                <Grid.Column>
                     <p>The Barcelona Java User Group is a non profit association with a great team and a broad
                         experience
                         in Java technologies. Since 2012, we are organizing talks and meetups focused
-                        on <strong>Java</strong> topics, looking forward to spin this technology from our hometown to
+                        on <strong>Java</strong> topics, looking forward to spin this technology from our hometown
+                        to
                         the
                         rest of the world.</p>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <CardColumns>
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                <Grid.Column width={12}>
+                    <Card.Group itemsPerRow={3}>
                         {status === "success" && data.map((member, index) => <Member key={index} member={member}/>)}
-                    </CardColumns>
-                </Col>
-            </Row>
-        </Container>
-    )
-        ;
+                    </Card.Group>
+                </Grid.Column>
+                <Grid.Column floated="right" width={4}>
+                    <MeetupEvents/>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
+    </Container>);
 };
 
 export default Members;
