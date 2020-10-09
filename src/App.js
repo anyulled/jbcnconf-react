@@ -11,7 +11,7 @@ import GlobalStyle from "./common/GlobalStyle";
 import Speakers from "./speakers/Speakers";
 import Sponsors from "./sponsors/Sponsors";
 import Articles from "./article/Articles";
-import HomepageLayout from "./common/Homepage";
+import HomepageLayout from "./common/HomepageLayout";
 import Tickets from "./tickets/Tickets";
 import Venue from "./venue/Venue";
 import BecomeSponsor from "./sponsors/BecomeSponsor";

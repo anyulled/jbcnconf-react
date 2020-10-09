@@ -36,7 +36,7 @@ const SpeakerPage = () => {
                             horizontal
                             style={{margin: '1em 0em', textTransform: 'uppercase'}}
                         >
-                            <a href='#'>Talks</a>
+                            <a id="talks" href='#talks'>Talks</a>
                         </Divider>
                         <Header as="h">{data.talks[0].title}</Header>
                         <p>{data.talks[0].abstract}</p>
