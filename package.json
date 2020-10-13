@@ -8,7 +8,7 @@
     "@testing-library/user-event": "12.1.7",
     "axios": "0.20.0",
     "react": "16.13.1",
-    "react-countdown": "2.2.2",
+    "react-countdown": "2.3.0",
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0",
     "react-parallax": "3.0.3",
