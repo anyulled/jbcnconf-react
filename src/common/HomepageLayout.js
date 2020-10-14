@@ -57,7 +57,7 @@ const DesktopContainer = (props) => {
     const {children} = props;
 
     return (
-        <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
+        <Responsive getWidth={getWidth} minWidth={768}>
             <Visibility
                 once={false}
                 onBottomPassed={showFixedMenu}
@@ -115,7 +115,7 @@ const MobileContainer = (props) => {
         <Responsive
             as={Sidebar.Pushable}
             getWidth={getWidth}
-            maxWidth={Responsive.onlyMobile.maxWidth}
+            maxWidth={1024}
         >
             <Sidebar
                 as={Menu}
