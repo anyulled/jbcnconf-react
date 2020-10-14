@@ -9,7 +9,6 @@ import {
     Image,
     List,
     Menu,
-    Responsive,
     Segment,
     Sidebar,
     Visibility,
@@ -18,7 +17,7 @@ import {
 const getWidth = () => {
     const isSSR = typeof window === 'undefined'
 
-    return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
+    return isSSR ? 768 : window.innerWidth
 }
 
 const HomepageHeading = ({mobile}) => <Container text>
