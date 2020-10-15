@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     Button,
     Container,
@@ -12,14 +12,20 @@ import {
     Segment,
     Sidebar,
     Visibility,
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
+import {createMedia} from "@artsy/fresnel";
 
-const getWidth = () => {
-    const isSSR = typeof window === 'undefined'
-
-    return isSSR ? 768 : window.innerWidth
-}
-
+const AppMedia = createMedia({
+    breakpoints: {
+        mobile: 320,
+        tablet: 768,
+        computer: 992,
+        largeScreen: 1200,
+        widescreen: 1920
+    }
+});
+const mediaStyles = AppMedia.createMediaStyle();
+const {Media, MediaContextProvider} = AppMedia;
 const HomepageHeading = ({mobile}) => <Container text>
     <Header
         as='h1'
@@ -51,54 +57,55 @@ const HomepageHeading = ({mobile}) => <Container text>
 const DesktopContainer = (props) => {
     const [fixed, setFixed] = React.useState({fixed: false});
 
-    const hideFixedMenu = () => setFixed(false);
-    const showFixedMenu = () => setFixed(true);
+    const hideFixedMenu = () => setFixed({fixed: false});
+    const showFixedMenu = () => setFixed({fixed: true});
 
     const {children} = props;
 
     return (
-        <Responsive getWidth={getWidth} minWidth={768}>
-            <Visibility
-                once={false}
-                onBottomPassed={showFixedMenu}
-                onBottomPassedReverse={hideFixedMenu}
-            >
-                <Segment
-                    inverted
-                    textAlign='center'
-                    style={{minHeight: 700, padding: '1em 0em'}}
-                    vertical
+        <MediaContextProvider>
+            <Segment as={Media} at="mobile">
+                <Visibility
+                    once={false}
+                    onBottomPassed={showFixedMenu}
+                    onBottomPassedReverse={hideFixedMenu}
                 >
-                    <Menu
-                        fixed={fixed ? 'top' : null}
-                        inverted={!fixed}
-                        pointing={!fixed}
-                        secondary={!fixed}
-                        size='large'
+                    <Segment
+                        inverted
+                        textAlign='center'
+                        style={{minHeight: 700, padding: '1em 0em'}}
+                        vertical
                     >
-                        <Container>
-                            <Menu.Item as='a' active>
-                                Home
-                            </Menu.Item>
-                            <Menu.Item as='a'>Work</Menu.Item>
-                            <Menu.Item as='a'>Company</Menu.Item>
-                            <Menu.Item as='a'>Careers</Menu.Item>
-                            <Menu.Item position='right'>
-                                <Button as='a' inverted={!fixed}>
-                                    Log in
-                                </Button>
-                                <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
-                                    Sign Up
-                                </Button>
-                            </Menu.Item>
-                        </Container>
-                    </Menu>
-                    <HomepageHeading/>
-                </Segment>
-            </Visibility>
-
-            {children}
-        </Responsive>
+                        <Menu
+                            fixed={fixed ? 'top' : null}
+                            inverted={!fixed}
+                            pointing={!fixed}
+                            secondary={!fixed}
+                            size='large'
+                        >
+                            <Container>
+                                <Menu.Item as='a' active>
+                                    Home
+                                </Menu.Item>
+                                <Menu.Item as='a'>Work</Menu.Item>
+                                <Menu.Item as='a'>Company</Menu.Item>
+                                <Menu.Item as='a'>Careers</Menu.Item>
+                                <Menu.Item position='right'>
+                                    <Button as='a' inverted={!fixed}>
+                                        Log in
+                                    </Button>
+                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
+                                        Sign Up
+                                    </Button>
+                                </Menu.Item>
+                            </Container>
+                        </Menu>
+                        <HomepageHeading/>
+                    </Segment>
+                </Visibility>
+                {children}
+            </Segment>
+        </MediaContextProvider>
     )
 }
 
@@ -112,60 +119,59 @@ const MobileContainer = (props) => {
     const {children} = props;
 
     return (
-        <Responsive
-            as={Sidebar.Pushable}
-            getWidth={getWidth}
-            maxWidth={1024}
-        >
-            <Sidebar
-                as={Menu}
-                animation='push'
-                inverted
-                onHide={handleSidebarHide}
-                vertical
-                visible={sidebarOpened}
-            >
-                <Menu.Item as='a' active>
-                    Home
-                </Menu.Item>
-                <Menu.Item as='a'>Work</Menu.Item>
-                <Menu.Item as='a'>Company</Menu.Item>
-                <Menu.Item as='a'>Careers</Menu.Item>
-                <Menu.Item as='a'>Log in</Menu.Item>
-                <Menu.Item as='a'>Sign Up</Menu.Item>
-            </Sidebar>
-
-            <Sidebar.Pusher dimmed={sidebarOpened}>
-                <Segment
+        <MediaContextProvider>
+            <Segment as={Media} at="tablet">
+                <Sidebar
+                    as={Menu}
+                    animation='push'
                     inverted
-                    textAlign='center'
-                    style={{minHeight: 350, padding: '1em 0em'}}
+                    onHide={handleSidebarHide}
                     vertical
+                    visible={sidebarOpened}
                 >
-                    <Container>
-                        <Menu inverted pointing secondary size='large'>
-                            <Menu.Item onClick={handleToggle}>
-                                <Icon name='sidebar'/>
-                            </Menu.Item>
-                            <Menu.Item position='right'>
-                                <Button as='a' inverted>
-                                    Log in
-                                </Button>
-                                <Button as='a' inverted style={{marginLeft: '0.5em'}}>
-                                    Sign Up
-                                </Button>
-                            </Menu.Item>
-                        </Menu>
-                    </Container>
-                    <HomepageHeading mobile/>
-                </Segment>
-                {children}
-            </Sidebar.Pusher>
-        </Responsive>)
+                    <Menu.Item as='a' active>
+                        Home
+                    </Menu.Item>
+                    <Menu.Item as='a'>Work</Menu.Item>
+                    <Menu.Item as='a'>Company</Menu.Item>
+                    <Menu.Item as='a'>Careers</Menu.Item>
+                    <Menu.Item as='a'>Log in</Menu.Item>
+                    <Menu.Item as='a'>Sign Up</Menu.Item>
+                </Sidebar>
 
+                <Sidebar.Pusher dimmed={sidebarOpened}>
+                    <Segment
+                        inverted
+                        textAlign='center'
+                        style={{minHeight: 350, padding: '1em 0em'}}
+                        vertical
+                    >
+                        <Container>
+                            <Menu inverted pointing secondary size='large'>
+                                <Menu.Item onClick={handleToggle}>
+                                    <Icon name='sidebar'/>
+                                </Menu.Item>
+                                <Menu.Item position='right'>
+                                    <Button as='a' inverted>
+                                        Log in
+                                    </Button>
+                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}>
+                                        Sign Up
+                                    </Button>
+                                </Menu.Item>
+                            </Menu>
+                        </Container>
+                        <HomepageHeading mobile/>
+                    </Segment>
+                    {children}
+                </Sidebar.Pusher>
+            </Segment>
+        </MediaContextProvider>
+        )
 }
 
 const ResponsiveContainer = ({children}) => <div>
+    <style>{mediaStyles}</style>
     <DesktopContainer>{children}</DesktopContainer>
     <MobileContainer>{children}</MobileContainer>
 </div>
