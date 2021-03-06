@@ -20,7 +20,7 @@
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "2.0.3",
     "styled-components": "5.2.1",
-    "styled-icons": "10.28.0"
+    "styled-icons": "10.29.0"
   },
   "scripts": {
     "start": "react-scripts start",
