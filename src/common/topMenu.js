@@ -1,11 +1,10 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import axios from "axios";
 import {useQuery} from "react-query";
 import {Dropdown, Menu} from "semantic-ui-react";
 
 const MenuItem = ({index, link: {href, label}}) => {
-    return (<Menu.Item key={index}><Link to={href}>{label}</Link></Menu.Item>);
+    return (<Menu.Item key={index}><a href={href}>{label}</a></Menu.Item>);
 };
 
 const DropdownItem = ({items, label}) => {
