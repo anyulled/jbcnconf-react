@@ -1,6 +1,6 @@
 # JBCNConf page
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Conference page made with react
@@ -32,6 +32,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://ve.linkedin.com/in/anyulled"><img src="https://avatars.githubusercontent.com/u/100741?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anyul Rivas</b></sub></a><br /><a href="#infra-anyulled" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/anyulled/jbcnconf-react/commits?author=anyulled" title="Tests">⚠️</a> <a href="https://github.com/anyulled/jbcnconf-react/commits?author=anyulled" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ynfantes"><img src="https://avatars.githubusercontent.com/u/6460648?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ynfantes</b></sub></a><br /><a href="https://github.com/anyulled/jbcnconf-react/commits?author=ynfantes" title="Code">💻</a></td>
   </tr>
 </table>
 
