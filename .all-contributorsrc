@@ -15,6 +15,15 @@
         "test",
         "code"
       ]
+    },
+    {
+      "login": "ynfantes",
+      "name": "ynfantes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6460648?v=4",
+      "profile": "https://github.com/ynfantes",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
