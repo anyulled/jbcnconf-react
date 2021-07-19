@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@artsy/fresnel": "1.5.0",
+    "@artsy/fresnel": "1.8.0",
     "@styled-icons/boxicons-logos": "10.23.0",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "11.2.7",
