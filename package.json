@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@artsy/fresnel": "1.8.0",
-    "@styled-icons/boxicons-logos": "10.23.0",
+    "@styled-icons/boxicons-logos": "10.34.0",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "11.2.7",
     "@testing-library/user-event": "13.2.0",
