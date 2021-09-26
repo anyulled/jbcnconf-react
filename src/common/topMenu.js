@@ -33,7 +33,7 @@ const TopMenu = () => {
     const isOk = () => status === "success";
 
     return isOk() && <Menu inverted fixed="top" pointing stackable>
-        <Menu.Item header>JBCNConf</Menu.Item>
+        <Menu.Item header key="header">JBCNConf</Menu.Item>
         {data.map((link, index) => renderItem(link, index))}
     </Menu>;
 };
