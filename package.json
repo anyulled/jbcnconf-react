@@ -24,8 +24,8 @@
     "styled-components": "5.3.3",
     "styled-icons": "10.45.0",
     "@styled-icons/boxicons-solid": "10.38.0",
-    "@styled-icons/fa-brands": "^10.38.0",
-    "@styled-icons/typicons": "^10.18.0"
+    "@styled-icons/fa-brands": "10.38.0",
+    "@styled-icons/typicons": "10.18.0"
   },
   "scripts": {
     "start": "react-scripts start",
