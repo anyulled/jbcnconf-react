@@ -21,11 +21,12 @@ jobs:
       - name: deploy with gh-pages
         uses: actions/setup-node@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+          USERMAIL: ${{ secrets.USER_EMAIL }}
       
       - run: npm install
       - run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@users.noreply.github.com"
+          git config --global user.name "Anyul Rivas"
+          git config --global user.email "${USERMAIL}"
           npm run deploy
