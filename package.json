@@ -1,11 +1,15 @@
 {
   "name": "jbcnconf-react",
   "version": "0.1.0",
-  "private": true,
+  "private": "false",
+  "homepage": "https://anyulled.github.io/jbcnconf-react/",
   "dependencies": {
     "@artsy/fresnel": "3.0.2",
     "@styled-icons/boxicons-logos": "10.38.0",
+    "@styled-icons/boxicons-solid": "10.38.0",
     "@styled-icons/evaicons-solid": "10.34.0",
+    "@styled-icons/fa-brands": "10.38.0",
+    "@styled-icons/typicons": "10.18.0",
     "@testing-library/jest-dom": "5.15.0",
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "13.5.0",
@@ -22,10 +26,7 @@
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "2.0.4",
     "styled-components": "5.3.3",
-    "styled-icons": "10.45.0",
-    "@styled-icons/boxicons-solid": "10.38.0",
-    "@styled-icons/fa-brands": "10.38.0",
-    "@styled-icons/typicons": "10.18.0"
+    "styled-icons": "10.45.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,7 +34,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch src/db/db.json --port=3001"
+    "server": "json-server --watch src/db/db.json --port=3001",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "json-server": "0.17.0",
     "npm-run-all": "4.1.5"
   }
