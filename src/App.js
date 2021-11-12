@@ -1,8 +1,7 @@
 import React from 'react';
 import TopMenu from "./common/topMenu";
 import Footer from "./common/footer";
-import {Route, Router, Switch} from "react-router";
-import {createBrowserHistory} from "history";
+import {Route, Routes} from "react-router";
 import {Home} from "./home/Home";
 import Talks from "./talks/talks";
 import {Helmet} from "react-helmet";
@@ -19,12 +18,12 @@ import CodeOfConduct from "./codeOfConduct/CodeOfConduct";
 import TravelToBarcelona from "./travel/travelToBarcelona";
 import SpeakerPage from "./speakers/SpeakerPage";
 import {QueryClient, QueryClientProvider} from "react-query";
+import {BrowserRouter} from "react-router-dom";
 
 const App = () => {
-    const history = createBrowserHistory();
     const queryClient = new QueryClient();
     return (
-        <Router history={history}>
+        <BrowserRouter>
             <QueryClientProvider client={queryClient}>
                 <div className="App">
                     <Helmet>
@@ -37,7 +36,7 @@ const App = () => {
                     <header>
                         <TopMenu/>
                     </header>
-                    <Switch>
+                    <Routes>
                         <Route exact path="/">
                             <Home/>
                         </Route>
@@ -80,13 +79,13 @@ const App = () => {
                         <Route path="*">
                             <h1 className="text-center text-danger">URL not found</h1>
                         </Route>
-                    </Switch>
+                    </Routes>
                     <footer>
                         <Footer/>
                     </footer>
                 </div>
             </QueryClientProvider>
-        </Router>
+        </BrowserRouter>
     )
 };
 
