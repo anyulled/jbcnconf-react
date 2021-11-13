@@ -37,47 +37,23 @@ const App = () => {
                         <TopMenu/>
                     </header>
                     <Routes>
-                        <Route exact path="/">
-                            <Home/>
-                        </Route>
-                        <Route path="/homepage">
-                            <HomepageLayout/>
-                        </Route>
-                        <Route path="/articles">
-                            <Articles/>
-                        </Route>
-                        <Route path="/talks">
-                            <Talks/>
-                        </Route>
-                        <Route path="/members">
-                            <Members/>
-                        </Route>
-                        <Route path="/speakers/:id">
-                            <SpeakerPage/>
-                        </Route>
-                        <Route path="/speakers">
-                            <Speakers/>
-                        </Route>
-                        <Route path="/sponsors">
-                            <Sponsors/>
-                        </Route>
-                        <Route path="/tickets">
-                            <Tickets/>
-                        </Route>
-                        <Route path="/java-barcelona-venue">
-                            <Venue/>
-                        </Route>
-                        <Route path="/become-sponsor">
-                            <BecomeSponsor/>
-                        </Route>
-                        <Route path="/coc">
-                            <CodeOfConduct/>
-                        </Route>
-                        <Route path="/travel-to-java-barcelona">
-                            <TravelToBarcelona/>
-                        </Route>
+                        <Route exact path="/" element={<Home/>}/>
+                        <Route path="/homepage" element={<HomepageLayout/>}/>
+                        <Route path="/articles" element={<Articles/>}/>
+                        <Route path="/talks" element={<Talks/>}/>
+                        <Route path="/members" element={<Members/>}/>
+                        <Route path="/speakers/:id" element={<SpeakerPage/>}/>
+                        <Route path="/speakers" element={<Speakers/>}/>
+                        <Route path="/sponsors" element={<Sponsors/>}/>
+                        <Route path="/tickets" element={<Tickets/>}/>
+                        <Route path="/java-barcelona-venue" element={<Venue/>}/>
+                        <Route path="/become-sponsor" element={<BecomeSponsor/>}/>
+                        <Route path="/coc" element={<CodeOfConduct/>}/>
+                        <Route path="/travel-to-java-barcelona" element={<TravelToBarcelona/>}/>
                         <Route path="*">
-                            <h1 className="text-center text-danger">URL not found</h1>
+                            <>
+                                URL not found
+                            </>
                         </Route>
                     </Routes>
                     <footer>
