@@ -26,6 +26,7 @@ jobs:
       
       - run: npm install
       - run: |
+          echo ${GITHUB_TOKEN} - ${GITHUB_REPOSITORY}
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git config --global user.name "Anyul Rivas"
           git config --global user.email "${USERMAIL}"
