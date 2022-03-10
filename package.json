@@ -11,7 +11,7 @@
     "@styled-icons/fa-brands": "10.38.0",
     "@styled-icons/typicons": "10.18.0",
     "@testing-library/jest-dom": "5.15.0",
-    "@testing-library/react": "12.1.2",
+    "@testing-library/react": "12.1.4",
     "@testing-library/user-event": "13.5.0",
     "axios": "0.24.0",
     "react": "17.0.2",
