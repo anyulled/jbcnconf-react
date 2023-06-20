@@ -5,7 +5,7 @@
   "homepage": "https://anyulled.github.io/jbcnconf-react/",
   "dependencies": {
     "@artsy/fresnel": "3.1.0",
-    "@styled-icons/boxicons-logos": "10.38.0",
+    "@styled-icons/boxicons-logos": "10.47.0",
     "@styled-icons/boxicons-solid": "10.38.0",
     "@styled-icons/evaicons-solid": "10.34.0",
     "@styled-icons/fa-brands": "10.38.0",
