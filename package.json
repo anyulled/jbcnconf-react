@@ -10,7 +10,7 @@
     "@styled-icons/evaicons-solid": "10.34.0",
     "@styled-icons/fa-brands": "10.38.0",
     "@styled-icons/typicons": "10.18.0",
-    "@testing-library/jest-dom": "5.15.0",
+    "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "13.5.0",
     "axios": "0.24.0",
